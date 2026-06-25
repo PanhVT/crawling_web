@@ -7,7 +7,7 @@ Orchestrate 6 phases:
   Phase 1: Seeder      → push URLs vào RabbitMQ (admin/admin)
   Phase 2: Scraper     → crawl HTML → SeaweedFS (9333/8088) + parse queue
   Phase 3: Parser      → parse HTML → load queue
-  Phase 4: DbLoader    → load vào pipeline-postgres:5433/vietnamworks (star schema)
+  Phase 4: DbLoader    → load vào airflow:5432/vietnamworks (star schema)
   Phase 5: Cleanup     → xóa raw files khỏi SeaweedFS
   Phase 6: Storage     → sync sang Qdrant:6333 + ElasticSearch:9200
 
@@ -114,7 +114,7 @@ def task_report(**context):
 ║  Phase 1 Seeder  : {seeded:>5} jobs → RabbitMQ (admin/admin)
 ║  Phase 2 Scraper : {scraped:>5} jobs → SeaweedFS :9333/:8088
 ║  Phase 3 Parser  : {parsed:>5} jobs parsed
-║  Phase 4 DbLoader: {loaded:>5} jobs → pipeline-postgres:5433
+║  Phase 4 DbLoader: {loaded:>5} jobs → airflow:5432
 ║  Phase 5 Cleanup : SeaweedFS raw files cleaned
 ║  Phase 6 Storage : Qdrant:6333 + ES:9200 synced
 ╚══════════════════════════════════════════════════╝
@@ -145,7 +145,6 @@ with DAG(
 |---------|-----------|------|
 | Airflow UI | airflow-apiserver | :8080 |
 | PostgreSQL (Airflow) | airflow-postgres | :5432 |
-| PostgreSQL (Pipeline) | pipeline-postgres | :5433 |
 | Redis | airflow-redis | :6379 |
 | RabbitMQ | rabbitmq | :5672 / :15672 |
 | SeaweedFS | seaweedfs | :9333 / :8088 |
