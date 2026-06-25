@@ -21,8 +21,7 @@ QUEUES = {
 }
 
 # ── PostgreSQL pipeline data ──────────────────────────────────
-# container: pipeline-postgres  |  host port: 5433  |  user: pipeline/pipeline123
-# (tách biệt với Airflow postgres trên port 5432)
+
 POSTGRES = {
     "host": os.getenv("PIPELINE_PG_HOST", "localhost"),
     "port": int(os.getenv("PIPELINE_PG_PORT", "5432")),
