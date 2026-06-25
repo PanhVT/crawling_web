@@ -1,0 +1,20 @@
+# Python bytecode (rác cấu hình)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Môi trường ảo (nếu có)
+.venv/
+venv/
+ENV/
+
+# Hệ điều hành & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# File log hoặc file cấu hình cá nhân
+*.log
+.env
