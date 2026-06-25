@@ -1,12 +1,3 @@
--- ============================================================
--- VietnamWorks Data Pipeline - PostgreSQL Schema
--- Phase 4: DbLoader writes vào đây
--- Dùng star schema theo style đã làm với Olist
--- ============================================================
-
--- NOTE: Script này chạy trong container pipeline-postgres
---       (port 5433, user=pipeline, db=vietnamworks)
---       KHÔNG phải airflow-postgres (port 5432, user=airflow)
 
 -- =====================
 -- DIMENSION TABLES
